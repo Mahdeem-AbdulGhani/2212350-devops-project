@@ -1,5 +1,7 @@
 # 2212350 — DevOps Final Project
 
+![CI Status](https://github.com/Mahdeem-AbdulGhani/2212350-devops-project/actions/workflows/ci.yml/badge.svg)
+
 > **Student:** 2212350
 > **Course:** DevOps Fundamentals
 > **Live URL:** http://34.234.93.120:8000
