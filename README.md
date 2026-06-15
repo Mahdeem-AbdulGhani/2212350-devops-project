@@ -2,7 +2,7 @@
 
 > **Student:** 2212350
 > **Course:** DevOps Fundamentals
-> **Live URL:** http://YOUR_EC2_IP:8000
+> **Live URL:** http://34.234.93.120:8000
 
 ---
 
