@@ -94,4 +94,14 @@ pytest app/tests/ -v
 
 ---
 
+
+---
+
+## Troubleshooting
+
+- **"db" host not found when running pytest locally**: Set `DATABASE_URL=sqlite:///./test_main.db` before running pytest, since the `db` hostname only resolves inside the Docker network.
+- **Port 8000 already in use**: Run `docker compose down` to stop any running containers before starting again.
+- **Permission denied on .pem file**: Run `chmod 400 your-key.pem` before SSHing into EC2.
+
+---
 *DevOps Fundamentals — Instructor: Afaq Ahmed*
