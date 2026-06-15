@@ -20,6 +20,10 @@ GitHub Push
     └── CD Pipeline (GitHub Actions)
             └── SSH into EC2
                     └── git pull + docker compose up --build
+
+
+The `web` service is a FastAPI application built from a slim Python 3.12 Docker image, running as a non-root user for security. The `db` service runs PostgreSQL 15 with data persisted in a named Docker volume, ensuring student records survive container restarts. Both services are orchestrated via Docker Compose, with a health check ensuring the database is ready before the web service starts.
+
 ```
 
 **Services:**
