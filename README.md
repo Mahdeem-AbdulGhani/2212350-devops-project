@@ -60,6 +60,27 @@ curl http://localhost:8000/students
 | GET | /students | List all students |
 | GET | /students/{reg_no} | Get student by registration number |
 
+
+---
+
+## Example Usage
+
+Test the live API with curl:
+
+```bash
+# Create a student
+curl -X POST http://34.234.93.120:8000/students \
+  -H "Content-Type: application/json" \
+  -d '{"reg_no": "2212350", "name": "Mahdeem", "semester": 6, "section": "A"}'
+
+# List all students
+curl http://34.234.93.120:8000/students
+
+# Get a specific student
+curl http://34.234.93.120:8000/students/2212350
+```
+
+
 ---
 
 ## EC2 Deployment
