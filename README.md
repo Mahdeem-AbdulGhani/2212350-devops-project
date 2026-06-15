@@ -20,6 +20,10 @@ GitHub Push
     └── CD Pipeline (GitHub Actions)
             └── SSH into EC2
                     └── git pull + docker compose up --build
+
+
+The `web` service is a FastAPI application built from a slim Python 3.12 Docker image, running as a non-root user for security. The `db` service runs PostgreSQL 15 with data persisted in a named Docker volume, ensuring student records survive container restarts. Both services are orchestrated via Docker Compose, with a health check ensuring the database is ready before the web service starts.
+
 ```
 
 **Services:**
@@ -60,6 +64,27 @@ curl http://localhost:8000/students
 | GET | /students | List all students |
 | GET | /students/{reg_no} | Get student by registration number |
 
+
+---
+
+## Example Usage
+
+Test the live API with curl:
+
+```bash
+# Create a student
+curl -X POST http://34.234.93.120:8000/students \
+  -H "Content-Type: application/json" \
+  -d '{"reg_no": "2212350", "name": "Mahdeem", "semester": 6, "section": "A"}'
+
+# List all students
+curl http://34.234.93.120:8000/students
+
+# Get a specific student
+curl http://34.234.93.120:8000/students/2212350
+```
+
+
 ---
 
 ## EC2 Deployment
@@ -94,4 +119,14 @@ pytest app/tests/ -v
 
 ---
 
+
+---
+
+## Troubleshooting
+
+- **"db" host not found when running pytest locally**: Set `DATABASE_URL=sqlite:///./test_main.db` before running pytest, since the `db` hostname only resolves inside the Docker network.
+- **Port 8000 already in use**: Run `docker compose down` to stop any running containers before starting again.
+- **Permission denied on .pem file**: Run `chmod 400 your-key.pem` before SSHing into EC2.
+
+---
 *DevOps Fundamentals — Instructor: Afaq Ahmed*
